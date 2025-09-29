@@ -1,0 +1,196 @@
+/* --- Variabel Warna color Biru Elegan --- */
+:root {
+  --bs-primary: #1e3a8a;
+  --bs-secondary: #3b82f6;
+  --bs-light: #f3f4f6;
+  --bs-dark: #111827;
+  --bs-info: #0d9488;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bs-light);
+}
+
+/* --- Navbar Styling --- */
+.navbar {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.navbar.scrolled {
+  background-color: rgba(30, 58, 138, 0.98) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+.navbar-brand {
+  font-weight: 700 !important;
+  font-size: 1.6rem;
+}
+.navbar-nav .nav-link {
+  color: white !important;
+  font-weight: 600;
+  margin-left: 10px;
+}
+.navbar-nav .nav-link:hover {
+  color: var(--bs-secondary) !important;
+}
+
+/* Tombol Login/Register */
+.navbar .btn-outline-light {
+  color: white !important;
+  border-color: white !important;
+}
+.navbar .btn-outline-light:hover {
+  color: var(--bs-primary) !important;
+  background-color: white !important;
+}
+
+/* --- Hero Section (Carousel Slider) --- */
+.hero {
+  position: relative;
+  color: white;
+  padding: 0;
+  text-align: center;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.carousel-item {
+  height: 700px;
+  min-height: 500px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 1s ease-in-out;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(30, 58, 138, 0.6), rgba(0, 0, 0, 0.7));
+}
+
+.carousel-caption-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: auto;
+  width: 90%;
+  max-width: 800px;
+}
+
+.carousel-caption-centered h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.carousel-caption-centered p.lead {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+/* Sembunyikan Navigasi Default Carousel */
+.carousel-control-prev,
+.carousel-control-next,
+.carousel-indicators {
+  display: none;
+}
+
+/* --- Struktur Perangkat Card --- */
+.card-perangkat {
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.card-perangkat:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(30, 58, 138, 0.2) !important;
+}
+.card-img-top-custom {
+  height: 300px;
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: filter 0.5s;
+}
+.card-perangkat:hover .card-img-top-custom {
+  filter: brightness(1);
+}
+.card-body-custom {
+  padding: 20px;
+  background: white;
+}
+.card-perangkat .card-title {
+  color: var(--bs-primary);
+}
+.card-perangkat .card-text {
+  color: var(--bs-dark);
+}
+
+/* --- Section Title --- */
+.section-title {
+  font-weight: 700;
+  color: var(--bs-primary);
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100px;
+  height: 4px;
+  background-color: var(--bs-secondary);
+  border-radius: 2px;
+}
+
+/* --- Profile Card Layout --- */
+.profile-card {
+  border: none;
+  border-left: 8px solid var(--bs-secondary);
+  border-radius: 15px;
+  background-color: white;
+}
+.profile-card p strong {
+  display: inline-block;
+  width: 160px;
+  color: var(--bs-primary);
+}
+
+/* --- Footer --- */
+.footer-custom {
+  background-color: var(--bs-dark) !important;
+  color: var(--bs-light);
+}
+
+/* --- Keyframes (Animasi) --- */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
