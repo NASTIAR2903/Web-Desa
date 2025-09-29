@@ -127,6 +127,11 @@ $data = $result->fetch_assoc();
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="kategori_berita_index.php">
+                            <i class="fas fa-th-list"></i> kategori Berita
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="berita_index.php">
                             <i class="fas fa-newspaper"></i> Berita Desa
                         </a>
@@ -171,14 +176,38 @@ $data = $result->fetch_assoc();
                             <form action="../../controllers/berita_update.php" method="POST" enctype="multipart/form-data">
                                 
                                 <input type="hidden" name="id" value="<?= $data['id']; ?>">
-                                <input type="hidden" name="old_gambar" value="<?= $data['gambar']; ?>"> <div class="mb-3">
+                                <input type="hidden" name="old_gambar" value="<?= $data['gambar']; ?>"> 
+                                <div class="mb-3">
                                     <label for="judul" class="form-label fw-bold">Judul Berita</label>
                                     <input type="text" name="judul" id="judul" class="form-control" value="<?= htmlspecialchars($data['judul'] ?? ''); ?>" required>
                                 </div>
                                 
                                 <div class="mb-3">
+                                    <label for="kategori_id" class="form-label fw-bold">Kategori Berita</label>
+                                    <select name="kategori_id" id="kategori_id" class="form-select" required>
+                                        <option value="">-- Pilih Kategori --</option>
+                                        <?php
+                                        $kategoriResult = $conn->query("SELECT * FROM kategori_berita ORDER BY nama_kategori ASC");
+                                        while ($kategori = $kategoriResult->fetch_assoc()):
+                                            $selected = ($kategori['id'] == $data['kategori_id']) ? "selected" : "";
+                                        ?>
+                                            <option value="<?= $kategori['id']; ?>" <?= $selected; ?>>
+                                                <?= htmlspecialchars($kategori['nama_kategori']); ?>
+                                            </option>
+                                        <?php endwhile; ?>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="isi" class="form-label fw-bold">Isi Berita</label>
                                     <textarea name="isi" id="isi" rows="10" class="form-control" required><?= htmlspecialchars($data['isi'] ?? ''); ?></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="tanggal_publikasi" class="form-label fw-bold">Tanggal Publikasi</label>
+                                    <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" 
+                                        class="form-control"
+                                        value="<?= htmlspecialchars($data['tanggal_publikasi'] ?? ''); ?>" required>
                                 </div>
                                 
                                 <div class="mb-3">

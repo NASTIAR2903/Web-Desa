@@ -7,7 +7,11 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
 
 include "../../config/db.php";
-$sql = "SELECT * FROM berita ORDER BY id DESC";
+$sql = "SELECT b.*, k.nama_kategori 
+        FROM berita b 
+        LEFT JOIN kategori_berita k ON b.kategori_id = k.id 
+        ORDER BY b.id DESC";
+
 $result = $conn->query($sql);
 ?>
 
@@ -125,6 +129,11 @@ $result = $conn->query($sql);
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="kategori_berita_index.php">
+                            <i class="fas fa-th-list"></i> kategori Berita
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="berita_index.php">
                             <i class="fas fa-newspaper"></i> Berita Desa
                         </a>
@@ -166,7 +175,7 @@ $result = $conn->query($sql);
                         </a>
                         
                         <?php 
-                        // Tambahkan notifikasi jika ada
+                        
                         if (isset($_SESSION['msg'])): ?>
                             <div class="alert alert-info alert-dismissible fade show mb-0" role="alert">
                                 <?= $_SESSION['msg']; unset($_SESSION['msg']); ?>
@@ -185,13 +194,15 @@ $result = $conn->query($sql);
                             <div class="table-responsive">
                                 <table class="table table-hover table-striped">
                                     <thead class="table-light">
-                                        <tr>
-                                            <th class="text-center" width="5%">No</th>
-                                            <th width="35%">Judul</th>
-                                            <th width="15%">Gambar</th>
-                                            <th width="20%">Tanggal Publikasi</th>
-                                            <th class="text-center" width="25%">Aksi</th>
-                                        </tr>
+                                    <tr>
+                                        <th class="text-center" width="5%">No</th>
+                                        <th width="25%">Judul</th>
+                                        <th width="15%">Kategori</th>
+                                        <th width="15%">Gambar</th>
+                                        <th width="20%">Tanggal Publikasi</th>
+                                        <th class="text-center" width="20%">Aksi</th>
+                                    </tr>
+
                                     </thead>
                                     <tbody>
                                         <?php if ($result->num_rows > 0): ?>
@@ -199,6 +210,13 @@ $result = $conn->query($sql);
                                                 <tr>
                                                     <td class="text-center"><?= $no++; ?></td>
                                                     <td class="fw-bold"><?= htmlspecialchars($row['judul']); ?></td>
+                                                    <td>
+                                                        <?php if(!empty($row['nama_kategori'])): ?>
+                                                            <span class="badge bg-info"><i class="fas fa-tag"></i> <?= htmlspecialchars($row['nama_kategori']); ?></span>
+                                                        <?php else: ?>
+                                                            <span class="text-muted small"><i class="fas fa-minus-circle"></i> Belum dikategorikan</span>
+                                                        <?php endif; ?>
+                                                    </td>
                                                     <td>
                                                         <?php if($row['gambar']): ?>
                                                             <img src="../../assets/berita/<?= $row['gambar']; ?>" alt="Gambar Berita" width="80" height="60" class="object-fit-cover">
@@ -216,6 +234,7 @@ $result = $conn->query($sql);
                                                         </a>
                                                     </td>
                                                 </tr>
+
                                             <?php endwhile; ?>
                                         <?php else: ?>
                                             <tr><td colspan="5" class="text-center py-4 text-muted"><i class="fas fa-box-open me-2"></i> Belum ada data berita.</td></tr>

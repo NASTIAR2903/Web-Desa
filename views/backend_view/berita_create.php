@@ -1,10 +1,13 @@
 <?php
+
 session_start();
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header("Location: ../frontend_view/login.php");
     exit();   
 }
 
+include "../../config/db.php";
+$kategori = $conn->query("SELECT * FROM kategori_berita ORDER BY nama_kategori ASC");
 
 ?>
 
@@ -115,6 +118,11 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="kategori_berita_index.php">
+                            <i class="fas fa-th-list"></i> kategori Berita
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="berita_index.php">
                             <i class="fas fa-newspaper"></i> Berita Desa
                         </a>
@@ -164,8 +172,24 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
                                 </div>
                                 
                                 <div class="mb-3">
+                                    <label for="kategori_id" class="form-label fw-bold">Kategori Berita</label>
+                                    <select name="kategori_id" id="kategori_id" class="form-select" required>
+                                        <option value="">-- Pilih Kategori --</option>
+                                        <?php while($row = $kategori->fetch_assoc()): ?>
+                                            <option value="<?= $row['id']; ?>"><?= htmlspecialchars($row['nama_kategori']); ?></option>
+                                        <?php endwhile; ?>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="isi" class="form-label fw-bold">Isi Berita</label>
                                     <textarea name="isi" id="isi" rows="10" class="form-control" placeholder="Tuliskan isi berita di sini..." required></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="tanggal_publikasi" class="form-label fw-bold">Tanggal Publikasi</label>
+                                    <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" 
+                                        class="form-control" value="<?= date('Y-m-d'); ?>" required>
                                 </div>
                                 
                                 <div class="mb-3">

@@ -128,6 +128,11 @@ $data = $result->fetch_assoc();
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="kategori_berita_index.php">
+                            <i class="fas fa-th-list"></i> kategori Berita
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="berita_index.php">
                             <i class="fas fa-newspaper"></i> Berita Desa
                         </a>
