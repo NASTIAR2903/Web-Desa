@@ -128,13 +128,23 @@ include "../../config/db.php";
                         </div>
 
                         <div class="mb-3">
-                            <label for="jenis_kelamin" class="form-label fw-bold">Jenis Kelamin *</label>
-                            <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
-                                <option value="" disabled selected>Pilih...</option>
-                                <option value="L">Laki-laki</option>
-                                <option value="P">Perempuan</option>
-                            </select>
+                            <label class="form-label fw-bold">Jenis Kelamin *</label>
+                            <div class="d-flex gap-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="jenis_kelamin" id="laki" value="L" required>
+                                    <label class="form-check-label" for="laki">
+                                        Laki-laki
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan" value="P" required>
+                                    <label class="form-check-label" for="perempuan">
+                                        Perempuan
+                                    </label>
+                                </div>
+                            </div>
                         </div>
+
                         
                         <div class="mb-3">
                             <label for="tanggal_lahir" class="form-label fw-bold">Tanggal Lahir *</label>
