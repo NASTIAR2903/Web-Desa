@@ -24,7 +24,7 @@ $result = $conn->query($sql);
             --sidebar-width: 250px;
         }
 
-        /* Styling untuk Sidebar (Konsisten) */
+        
         .sidebar {
             position: fixed;
             top: 0;
@@ -59,14 +59,14 @@ $result = $conn->query($sql);
             margin-right: 8px;
         }
 
-        /* Mengatur Main Content */
+       
         main {
             margin-left: var(--sidebar-width);
             padding-top: 56px;
             min-height: 100vh; 
         }
 
-        /* Styling untuk Gambar di Tabel */
+        
         .table img {
             border-radius: 5px;
             border: 1px solid #ddd;
@@ -90,7 +90,7 @@ $result = $conn->query($sql);
             <span class="text-dark me-3 d-none d-sm-inline">
                 <i class="fas fa-user-circle me-1"></i> Halo, <?= 'Nama Admin'; ?>
             </span>
-            <a href="logout.php" class="btn btn-sm btn-outline-danger">
+            <a href="../../controllers/authentication/logout.php" class="btn btn-sm btn-outline-danger">
                 <i class="fas fa-sign-out-alt me-1"></i> Logout
             </a>
         </div>

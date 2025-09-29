@@ -80,7 +80,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             <span class="text-dark me-3 d-none d-sm-inline">
                 <i class="fas fa-user-circle me-1"></i> Halo, <?= 'Nama Admin'; ?>
             </span>
-            <a href="logout.php" class="btn btn-sm btn-outline-danger">
+            <a href="../../controllers/authentication/logout.php" class="btn btn-sm btn-outline-danger">
                 <i class="fas fa-sign-out-alt me-1"></i> Logout
             </a>
         </div>

@@ -26,7 +26,7 @@ $data = $result->fetch_assoc();
             --sidebar-width: 250px;
         }
 
-        /* Styling untuk Sidebar (Konsisten) */
+        
         .sidebar {
             position: fixed;
             top: 0;
@@ -61,14 +61,14 @@ $data = $result->fetch_assoc();
             margin-right: 8px;
         }
 
-        /* Mengatur Main Content */
+        
         main {
             margin-left: var(--sidebar-width);
             padding-top: 56px;
             min-height: 100vh; 
         }
 
-        /* Styling untuk Gambar Saat Edit */
+        
         .form-gambar-preview {
             border-radius: 8px;
             border: 1px solid #ddd;
@@ -92,7 +92,7 @@ $data = $result->fetch_assoc();
             <span class="text-dark me-3 d-none d-sm-inline">
                 <i class="fas fa-user-circle me-1"></i> Halo, <?= 'Nama Admin'; ?>
             </span>
-            <a href="logout.php" class="btn btn-sm btn-outline-danger">
+            <a href="../../controllers/authentication/logout.php" class="btn btn-sm btn-outline-danger">
                 <i class="fas fa-sign-out-alt me-1"></i> Logout
             </a>
         </div>
